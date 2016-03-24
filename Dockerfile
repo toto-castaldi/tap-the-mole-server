@@ -8,7 +8,7 @@ RUN apt-get install openjdk-8-jdk -y
 RUN apt-get install curl -y
 RUN apt-get install wget -y
 
-RUN wget http://repo1.maven.org/maven2/com/github/toto-castaldi/services/simple-smtp-server/1.0/simple-smtp-server-1.0.war && cp /simple-smtp-server-1.0.war /smtp.war
+RUN wget https://oss.sonatype.org/content/repositories/snapshots/com/github/toto-castaldi/tap-the-mole/server/1.0-SNAPSHOT/server-1.0-20160324.234014-1.jar && cp /server-1.0-20160324.234014-1.jar /server.jar
 
 COPY docker-entrypoint.sh /
 
