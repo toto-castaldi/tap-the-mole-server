@@ -1,6 +1,11 @@
 package com.github.totoCastaldi.tapTheMole;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
+import com.sun.istack.internal.Nullable;
+import org.apache.commons.lang.StringUtils;
 import org.rapidoid.annotation.Controller;
+import org.rapidoid.annotation.GET;
 import org.rapidoid.annotation.POST;
 import org.rapidoid.http.Req;
 
@@ -20,9 +25,37 @@ public class RankingController {
     }
 
     @POST
-    public Collection<String> endGame(Req req) {
+    public Integer endGame(Req req) {
         final Map.Entry<String, Object> param = req.posted().entrySet().iterator().next();
-        ranking.newRank(param.getKey(), Integer.valueOf(String.valueOf(param.getValue())));
-        return ranking.asList();
+        return ranking.newRank(param.getKey(), Integer.valueOf(String.valueOf(param.getValue())));
+    }
+
+    @GET
+    public Collection<String> page(Integer pageNumber) {
+        return transform(ranking.asList(pageNumber));
+    }
+
+    @GET
+    public Collection<String> all() {
+        return transform(ranking.all());
+    }
+
+    @GET
+    public Integer pageCount() {
+        return ranking.pageCount();
+    }
+
+    private Collection<String> transform(Collection<RankingInfo> rankingInfos) {
+        return Collections2.transform(rankingInfos, new Function<RankingInfo, String>() {
+
+            int position = 0;
+
+            @Nullable
+            @Override
+            public String apply(@Nullable RankingInfo input) {
+                return StringUtils.leftPad(String.valueOf(++ position), 3, "0") + " - " + StringUtils.leftPad(String.valueOf(input.getScore()), 3, "0") + " - " + input.getName();
+
+            }
+        });
     }
 }
