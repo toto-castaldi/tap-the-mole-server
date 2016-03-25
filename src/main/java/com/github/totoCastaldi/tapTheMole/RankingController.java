@@ -2,13 +2,13 @@ package com.github.totoCastaldi.tapTheMole;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
-import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang.StringUtils;
 import org.rapidoid.annotation.Controller;
 import org.rapidoid.annotation.GET;
 import org.rapidoid.annotation.POST;
 import org.rapidoid.http.Req;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Map;
 
