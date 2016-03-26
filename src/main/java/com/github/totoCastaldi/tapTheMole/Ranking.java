@@ -47,6 +47,10 @@ public class Ranking {
                 return o2.getScore() - o1.getScore();
             }
         });
+        int position = 0;
+        for (RankingInfo rank : ranks) {
+            rank.setPosition(++ position);
+        }
         int index = this.ranks.indexOf(rankingInfo);
         return index / this.pageSize;
     }

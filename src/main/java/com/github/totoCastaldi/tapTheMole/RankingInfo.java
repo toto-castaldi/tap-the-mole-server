@@ -2,13 +2,15 @@ package com.github.totoCastaldi.tapTheMole;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Created by toto on 24/03/16.
  */
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RankingInfo {
-    private String name;
-    private Integer score;
+    private final String name;
+    private final Integer score;
+    private Integer position;
 }
