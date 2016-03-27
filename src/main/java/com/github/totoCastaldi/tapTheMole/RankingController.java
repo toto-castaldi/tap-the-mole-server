@@ -48,12 +48,10 @@ public class RankingController {
     private Collection<String> transform(Collection<RankingInfo> rankingInfos) {
         return Collections2.transform(rankingInfos, new Function<RankingInfo, String>() {
 
-            int position = 0;
-
             @Nullable
             @Override
             public String apply(@Nullable RankingInfo input) {
-                return StringUtils.leftPad(String.valueOf(++ position), 3, "0") + " - " + StringUtils.leftPad(String.valueOf(input.getScore()), 3, "0") + " - " + input.getName();
+                return StringUtils.leftPad(String.valueOf(input.getPosition()), 3, "0") + " - " + StringUtils.leftPad(String.valueOf(input.getScore()), 3, "0") + " - " + input.getName();
 
             }
         });
