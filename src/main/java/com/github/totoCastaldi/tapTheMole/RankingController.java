@@ -30,6 +30,13 @@ public class RankingController {
         return ranking.newRank(param.getKey(), Integer.valueOf(String.valueOf(param.getValue())));
     }
 
+    @POST
+    public Collection<String> endGameAndAll(Req req) {
+        final Map.Entry<String, Object> param = req.posted().entrySet().iterator().next();
+        ranking.newRank(param.getKey(), Integer.valueOf(String.valueOf(param.getValue())));
+        return all();
+    }
+
     @GET
     public Collection<String> page(Integer pageNumber) {
         return transform(ranking.asList(pageNumber));

@@ -8,7 +8,7 @@ RUN apt-get install openjdk-8-jdk -y
 RUN apt-get install curl -y
 RUN apt-get install wget -y
 
-RUN wget https://oss.sonatype.org/content/repositories/snapshots/com/github/toto-castaldi/tap-the-mole/server/1.0-SNAPSHOT/server-1.0-20160327.075822-3.jar && cp /*.jar /server.jar
+RUN wget https://oss.sonatype.org/content/repositories/snapshots/com/github/toto-castaldi/tap-the-mole/server/1.0-SNAPSHOT/server-1.0-20160420.190314-4.jar && cp /*.jar /server.jar
 
 COPY docker-entrypoint.sh /
 
